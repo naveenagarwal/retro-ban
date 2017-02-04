@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardService } from '../services/board.service'
+import { CookieService } from 'angular2-cookie/core';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,22 @@ import { BoardService } from '../services/board.service'
 export class HomeComponent implements OnInit {
   allBoards: any;
 
-  constructor(private boardService: BoardService) { }
+  constructor(
+      private boardService: BoardService,
+      private cookieService: CookieService
+    ) { }
 
   ngOnInit() {
-    this.boardService.all().subscribe(
+    if(this.cookieService.get("userId")){
+      this.boardService.all(this.cookieService.get("userId")).subscribe(
         (data) =>  {
           this.allBoards = data
         }
       )
+    }else{
+      this.allBoards = [];
+    }
+
   }
 
 }

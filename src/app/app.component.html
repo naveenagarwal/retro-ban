@@ -4,14 +4,14 @@
       <a routerLink="/" routerLinkActive="active">RetroBan!</a>
     </div>
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse navbar-ex1-collapse" [ngSwitch]="loggedIn">
+      <ul class="nav navbar-nav" *ngSwitchCase="true">
         <li>
           <a routerLink="/board" routerLinkActive="active">Create New Board</a>
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" [ngSwitch]="loggedIn">
+      <ul class="nav navbar-nav navbar-right" >
         <li *ngSwitchCase="true">
           <a href="javascript:void(0);" > Welcome {{ user.name }} </a>
         </li>

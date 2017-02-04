@@ -7,12 +7,12 @@ export class BoardService {
 
   constructor(private http: Http) { }
 
-  create(name) {
+  create(name, userId) {
     console.log("in create");
     let url = environment.api + '/board/' + name;
     console.log("url ", url);
 
-    return this.http.post(url, {} ).map(
+    return this.http.post(url, { userId: userId } ).map(
         (res) => res.json()
       );
   }
@@ -51,10 +51,10 @@ export class BoardService {
       );
   }
 
-  all() {
+  all(userId) {
     console.log("fetching all boards for a user ");
 
-    let url = environment.api + '/board/list/';
+    let url = environment.api + '/board/list/' + userId;
 
     console.log("url ", url);
 

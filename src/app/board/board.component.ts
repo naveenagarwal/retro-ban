@@ -3,6 +3,7 @@ import { Section } from '../section';
 import { Item } from '../item';
 import { Board } from '../board';
 import { BoardService } from '../services/board.service'
+import { CookieService } from 'angular2-cookie/core';
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -29,6 +30,7 @@ export class BoardComponent implements OnInit {
   constructor(
       private board: BoardService,
       private route: ActivatedRoute,
+      private cookieService: CookieService,
       private router: Router
     ) {
     this.item = { id: "", title: "", content: "", sectionId: "" };
@@ -40,7 +42,7 @@ export class BoardComponent implements OnInit {
     this.id = this.route.snapshot.params['id']
 
     if(!this.id){
-      this.board.create(this.boardName).subscribe(
+      this.board.create(this.boardName, this.cookieService.get("userId") ).subscribe(
         (data) => {
           this.retroBoard = data;
           this.sections = this.retroBoard.Sections;
