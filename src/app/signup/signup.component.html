@@ -1,0 +1,23 @@
+<div class="well">
+  <h4 class="text-muted"> Signup </h4>
+</div>
+<div class="container">
+  <div class="centered col-lg-3">
+    <form (ngSubmit)="signup()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" id="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="user.password" name="password" id="password" class="form-control" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary" >Signup</button>
+    </form>
+  </div>
+</div>
+

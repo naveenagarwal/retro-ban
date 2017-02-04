@@ -1,0 +1,56 @@
+#sections .panel-default>.panel-heading, #sections .panel-heading a, #sections .panel-heading a:visited {
+  color: #fff;
+}
+
+#addStickyModal .modal-header  {
+  color: #fff;
+}
+
+#sections .panel-heading a, .thumbnail a {
+  cursor: pointer;
+}
+
+#sections .panel-heading .glyphicon {
+  top: 10px;
+}
+
+.section-1 .panel-heading, .modal-section-1 .modal-header {
+  background-color: blue;
+}
+
+.section-1 .thumbnail {
+  background-color: beige;
+}
+
+.section-2 .panel-heading, .modal-section-2 .modal-header {
+  background-color: orange;
+}
+
+.section-2 .thumbnail {
+  background-color: yellow;
+}
+
+.section-3 .panel-heading, .modal-section-3 .modal-header {
+  background-color: brown;
+}
+
+.section-3 .thumbnail {
+  background-color: wheat;
+}
+
+.section-4 .panel-heading, .modal-section-4 .modal-header {
+  background-color: green;
+}
+
+.section-4 .thumbnail {
+  background-color: skyblue;
+}
+
+.thumbnail a .glyphicon-remove {
+  color: red;
+  display: block;
+}
+
+#board-name-block {
+  width: 30%;
+}

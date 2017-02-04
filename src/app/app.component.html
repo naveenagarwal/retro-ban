@@ -1,3 +1,44 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header navbar-brand">
+      <a routerLink="/" routerLinkActive="active">RetroBan!</a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="/board" routerLinkActive="active">Create New Board</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" [ngSwitch]="loggedIn">
+        <li *ngSwitchCase="true">
+          <a href="javascript:void(0);" > Welcome {{ user.name }} </a>
+        </li>
+        <li class="dropdown" *ngSwitchCase="true">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="javascript:void(0);" class="text-danger" (click)="logout()" >
+                Logout
+              </a>
+            </li>
+
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Link</a> </li>
+
+          </ul>
+        </li>
+
+        <li *ngSwitchCase="false">
+          <a routerLink="/login" routerLinkActive="active">Login</a>
+        </li>
+        <li *ngSwitchCase="false">
+          <a routerLink="/signup" routerLinkActive="active">Signup</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

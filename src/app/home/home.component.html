@@ -1,0 +1,10 @@
+<ul class="list-group">
+
+  <li class="list-group-item" *ngFor=" let board of allBoards; let j = index; ">
+    <a routerLink="/board/{{board.id}}">
+      {{board.name}}
+    </a>
+  </li>
+
+</ul>
+
