@@ -70,7 +70,7 @@ export class BoardComponent implements OnInit {
         break;
       }
     }
-    let id = this.sections[index].Items.length + 1
+    // let id = this.sections[index].Items.length + 1
     let item = {
       title: this.item.title,
       content: this.item.content,
@@ -88,20 +88,25 @@ export class BoardComponent implements OnInit {
   }
 
   removeItem(sectionId, itemId){
-    let index = null;
-    for(let i=0; i < this.sections.length; i++){
-      if(this.sections[i].id === sectionId ){
-        for(let j=0; j<this.sections[i].Items.length; j++){
-          if(this.sections[i].Items[j].id == itemId){
-            this.sections[i].Items.splice(j, 1);
-            break;
+    this.board.removeItem(itemId).subscribe(
+        (data) => {
+          console.log(data);
+          let index = null;
+          for(let i=0; i < this.sections.length; i++){
+            if(this.sections[i].id === sectionId ){
+              for(let j=0; j < this.sections[i].Items.length; j++){
+                if(this.sections[i].Items[j].id == itemId){
+                  this.sections[i].Items.splice(j, 1);
+                  break;
+                }
+              }
+              break;
+            }
           }
+          this.sectionId = null;
+          this.itemId = null;
         }
-        break;
-      }
-    }
-    this.sectionId = null;
-    this.itemId = null;
+      )
   }
 
   showRemoveStickyModal(sectionId, itemId){
@@ -127,18 +132,29 @@ export class BoardComponent implements OnInit {
   }
 
   editItem(item) {
-    let index = null;
-    for(let i=0; i < this.sections.length; i++){
-      if(this.sections[i].id === item.sectionId ){
-        for(let j=0; j<this.sections[i].Items.length; j++){
-          if(this.sections[i].Items[j].id == item.id){
-            this.sections[i].Items[j] = item;
-            break;
+    this.board.editItem(item).subscribe(
+        (data) => {
+          console.log(data);
+          let index = null;
+          for(let i=0; i < this.sections.length; i++){
+            if(this.sections[i].id === item.SectionId ){
+              for(let j=0; j < this.sections[i].Items.length; j++){
+                if(this.sections[i].Items[j].id == item.id){
+                  this.sections[i].Items[j] = item;
+                  break;
+                }
+              }
+              break;
+            }
           }
+
+          this.sectionId = null;
+          this.sectionName = null;
+          this.item = {};
         }
-        break;
-      }
-    }
+      )
+
+
   }
 
   updateBoardName() {

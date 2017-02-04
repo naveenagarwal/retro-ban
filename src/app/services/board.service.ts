@@ -51,6 +51,30 @@ export class BoardService {
       );
   }
 
+  editItem(item) {
+    console.log("creating item for section ", item);
+
+    let url = environment.api + '/item/' + item.id;
+
+    console.log("url ", url);
+
+    return this.http.patch(url, { item: JSON.stringify(item) } ).map(
+        (res) => res.json()
+      );
+  }
+
+  removeItem(itemId) {
+    console.log("removeing item ");
+
+    let url = environment.api + '/item/' + itemId;
+
+    console.log("url ", url);
+
+    return this.http.delete(url).map(
+        (res) => res.json()
+      );
+  }
+
   all(userId) {
     console.log("fetching all boards for a user ");
 
